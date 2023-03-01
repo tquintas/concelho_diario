@@ -1,0 +1,396 @@
+:root {
+    --darker: rgb(21,21,21);
+    --dark: rgb(52,52,52);
+    --light: antiquewhite; 
+    --modalheight: 90%;
+    --optionH: 250px;
+    --pholder: rgb(169,169,169);
+    --emoji: 30px;
+    --modalFont: small;
+}
+* {
+    background-color: var(--darker) ;
+    text-align: center;
+    color: var(--light);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+h1 {
+    position: relative;
+    width: 14cm;
+    border-style: none none solid none;
+    font-size: 33px;
+    z-index: 0;
+}
+img {
+    text-align: inherit;
+}
+.flex_row {
+    margin-top: 4px;
+    padding: 0;
+    width: 14cm;
+    background-color: var(--dark);
+    height: 30px;
+    display: flex;
+}
+input[type=submit] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.button {
+    text-align: inherit;
+    margin-top: 4px;
+    width: 14cm;
+    background-color: var(--darker);
+    height: 30px;
+    border: 2px solid var(--light);
+    color: var(--light);
+    font-family: inherit;
+    font-size: medium;
+    
+}
+.share {
+    background-color: rgb(112, 167, 30);
+    color: antiquewhite;
+}
+.share:hover {
+    background-color: rgb(132, 196, 36);
+}
+.flex_row > div {
+    border: 2px solid var(--light);
+    height: 26px;
+    line-height: 25px;
+    color: inherit;
+    font-family: inherit;
+    font-size: medium;
+    margin-left: auto;
+    margin-right: auto;
+}
+.left {
+    text-align: left;
+    padding-left: 5ex;
+    letter-spacing: 7ex;
+    white-space: nowrap;
+    font-size: small;
+}
+.input {
+    text-align: left;
+    border: 2px solid var(--light);
+    color: inherit;
+    background-color: var(--dark);
+    font-family: inherit;
+    font-size: medium;
+    height: 25px;
+    width: calc(14cm - 1ex - 4px);
+    padding-left: 1ex;
+    padding-right: 0ex;
+    outline: none;
+}
+::placeholder {
+    color: var(--pholder);
+}
+.howto {
+    float: left;
+    font-size: var(--emoji);
+    cursor: pointer;
+}
+.settings {
+    float: right;
+    font-size: var(--emoji);
+    cursor: pointer;
+}
+.about {
+    float: left;
+    font-size: var(--emoji);
+    cursor: pointer;
+    margin-left: 4px;
+}
+.stats {
+    float: right;
+    font-size: var(--emoji);
+    cursor: pointer;
+    margin-right: 4px;
+}
+.modalbg {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 63px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0);
+}
+@keyframes openwindow {
+    from {height: 0%;}
+    to {height: var(--modalheight);}
+}
+@keyframes closewindow {
+    from {height: var(--modalheight);}
+    to {height: 0%;}
+}
+@-webkit-keyframes openwindow {
+    from {height: 0%;}
+    to {height: var(--modalheight);}
+}
+@-webkit-keyframes closewindow {
+    from {height: var(--modalheight);}
+    to {height: 0%;}
+}
+@keyframes scaling {
+    from {transform: none;}
+    to {transform: scale(1.1);}
+}
+@-webkit-keyframes scaling {
+    from {transform: none;}
+    to {transform: scale(1.1);}
+}
+.zoominout {
+    animation-name: scaling;
+    animation-duration: 0.4s;
+    animation-direction: alternate;
+    animation-delay: 0s;
+    -webkit-animation-name: scaling;
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-delay: 0s;
+}
+.examplecenter {
+    display: flex;
+    justify-content: center;
+}
+.example {
+    display: inline-flex;
+    justify-content: center;
+    border: 2px solid var(--darker);
+    height: 25px;
+    line-height: 25px;
+    font-size: 15px !important;
+    margin-left: auto;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    animation-name: scaling;
+    animation-duration: 0.4s;
+    animation-direction: alternate;
+    animation-delay: 1s;
+    -webkit-animation-name: scaling;
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-delay: 1s;
+}
+.modalcnt {
+    background-color: var(--light);
+    color: var(--darker);
+    height: 0cm;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin: auto;
+    width: calc(14cm - 20px);
+    overflow: scroll;
+}
+.open {
+    animation-name: openwindow;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: openwindow;
+    -webkit-animation-duration: 0.8s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+}
+.close {
+    animation-name: closewindow;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: closewindow;
+    -webkit-animation-duration: 0.8s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+}
+.modalcnt * {
+    text-align: justify;
+    font-size: var(--modalFont);
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+}
+.modalcnt > h2 {
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--darker);
+}
+.modalcnt > div {
+    border-bottom: 2px solid var(--darker);
+}
+a {
+    font-size: inherit;
+    color: inherit;
+    background-color: inherit;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+}
+a:visited {
+    color: inherit;
+}
+.switch {
+    position: relative;
+    width: 52px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--darker);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "•";
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    color: var(--darker);
+    background-color: var(--light);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slider:before {
+    -webkit-transform: translateX(22px);
+    transform: translateX(22px);
+}
+input:checked + .slider {
+    background-color: var(--darker);
+}
+#defs {
+    font-size:16px;
+    height:30px;
+    line-height:30px;
+    width:80%;
+}
+@keyframes fades {
+    0% {opacity: 0;}
+    20%, 80% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes fades {
+    0% {opacity: 0;}
+    20%, 80% {opacity: 1;}
+    100% {opacity: 0;}
+}
+#results {
+    border: none;
+    opacity: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    font-size: 14px;
+    text-align: center;
+    animation: fades 2.5s linear .5s 1 forwards;
+    -webkit-animation: fades 2.5s linear .5s 1 forwards;
+}
+.optionmodal {
+    display: none;
+    position: fixed;
+    padding-top: max(0px, calc(219px - var(--optionH)));
+    z-index: 0;
+    left: 0;
+    top: 280px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+}
+.optioncnt {
+    background-color: var(--darker);
+    color: var(--light);
+    height: min(var(--optionH), 219px);
+    margin: auto;
+    width: calc(14cm + 1px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.optioncnt::-webkit-scrollbar {
+    display: none;
+}
+.optioncnt > div {
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 0px;
+    width: calc(14cm - 14px);
+    border: 2px solid var(--light);
+    font-size: medium;
+    height: 26px;
+    line-height: 25px;
+}
+.optioncnt > div:hover {
+    background-color: var(--dark);
+}
+.bars {
+    background-color: var(--darker);
+    text-align: right;
+    padding-right: 7px;
+    color: var(--light);
+    font-size: small;
+    height: 20px;
+    line-height: 21px;
+    max-width: 9.4cm;
+    min-width: 0.4cm;
+    display: inline-block;
+}
+#ylabels {
+    text-align: center;
+    height: 20px;
+    line-height: 21px;
+    width: 20px;
+    display: inline-block;
+}
+.stattable {
+    border: none;
+    border-spacing: 30px 0px;
+    text-align: center;
+}
+.stattable td {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+    vertical-align: top;
+}
+#blocker {
+    background-color: rgba(0,0,0,0);
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
